@@ -8,4 +8,5 @@ config.json
 package-lock.json
 .env.development
 .env
+accounts.txt
 deploy-config
