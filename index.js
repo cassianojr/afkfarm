@@ -11,7 +11,9 @@ require('dotenv').config();
 let token = process.env.TOKEN;
 let channel = process.env.CHANNEL;
 
-client.login(token)
+client.login(token).then(() =>{
+  console.log('Discord bot logged in successfully');
+});
 
 mineflayer.multiple = async (bots, constructor) => {
   const { Worker, isMainThread, workerData } = require('worker_threads')
