@@ -394,6 +394,10 @@ const bot_creator = ({ username, pass, home, auth }) => {
     console.log(`Kicked for ${reason}`);
   });
 
+  bot.on('error', err => {
+  console.error('Bot error:', err);
+});
+
   bot.on('end', async (reason) => {
     if (reason.includes('quitting') && bot.isRestarting) {
       client.removeAllListeners()
