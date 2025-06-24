@@ -19,7 +19,10 @@ mineflayer.multiple = async (bots, constructor) => {
   const { Worker, isMainThread, workerData } = require('worker_threads')
   if (isMainThread) {
     const threads = []
+    console.log(`Starting ${bots.length} bots...`.brightMagenta);
+    
     for (const i in bots) {
+      console.log(`Starting bot ${i + 1} of ${bots.length}`.brightMagenta);
       await utils.sleep(14000)
       threads.push(new Worker(__filename, { workerData: bots[i] }))
     }
