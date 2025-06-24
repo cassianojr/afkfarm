@@ -11,18 +11,13 @@ require('dotenv').config();
 let token = process.env.TOKEN;
 let channel = process.env.CHANNEL;
 
-client.login(token).then(() =>{
-  console.log('Discord bot logged in successfully');
-});
+client.login(token);
 
 mineflayer.multiple = async (bots, constructor) => {
   const { Worker, isMainThread, workerData } = require('worker_threads')
   if (isMainThread) {
     const threads = []
-    console.log(`Starting ${bots.length} bots...`.brightMagenta);
-    
     for (const i in bots) {
-      console.log(`Starting bot ${i + 1} of ${bots.length}`.brightMagenta);
       await utils.sleep(14000)
       threads.push(new Worker(__filename, { workerData: bots[i] }))
     }
@@ -35,11 +30,8 @@ const accounts = []
 const accountFile = 'accounts.txt';
 const accountsFileData = fs.readFileSync(accountFile, 'utf8');
 
-
 for (const account of accountsFileData.split(/\r?\n/)) {
-  
   const splitted = account.split(':')
-  console.log(splitted);
   
   if (splitted.length === 4) {
     accounts.push({ username: splitted[0], pass: splitted[1], home: splitted[2], auth: splitted[3] });
