@@ -38,6 +38,8 @@ for (const account of accountsFileData.split('\r\n')) {
   const splitted = account.split(':')
   if (splitted.length === 4) {
     accounts.push({ username: splitted[0], pass: splitted[1], home: splitted[2], auth: splitted[3] });
+    console.log(`Account loaded: ${splitted[0]}`.brightGreen);
+    
   }
 }
 
