@@ -36,7 +36,7 @@ const accountFile = 'accounts.txt';
 const accountsFileData = fs.readFileSync(accountFile, 'utf8');
 
 
-for (const account of accountsFileData.split('\r\n')) {
+for (const account of accountsFileData.split(/\r?\n/)) {
   
   const splitted = account.split(':')
   console.log(splitted);
