@@ -34,12 +34,13 @@ mineflayer.multiple = async (bots, constructor) => {
 const accounts = []
 const accountFile = 'accounts.txt';
 const accountsFileData = fs.readFileSync(accountFile, 'utf8');
-console.log(`Carregando contas do arquivo: ${accountFile}`.brightMagenta);
-console.log(accountsFileData);
 
 
 for (const account of accountsFileData.split('\r\n')) {
+  
   const splitted = account.split(':')
+  console.log(splitted);
+  
   if (splitted.length === 4) {
     accounts.push({ username: splitted[0], pass: splitted[1], home: splitted[2], auth: splitted[3] });
     console.log(`Account loaded: ${splitted[0]}`.brightGreen);
