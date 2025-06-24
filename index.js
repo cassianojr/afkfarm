@@ -394,11 +394,7 @@ const bot_creator = ({ username, pass, home, auth }) => {
     console.log(`Kicked for ${reason}`);
   });
 
-  bot.on('error', err => {
-  console.error('Bot error:', err);
-});
-
-  bot.on('end', async (reason) => {
+  bot.on('end', async (reason, loggedIin) => {
     if (reason.includes('quitting') && bot.isRestarting) {
       client.removeAllListeners()
       bot.removeAllListeners()
@@ -418,6 +414,7 @@ const bot_creator = ({ username, pass, home, auth }) => {
       client.removeAllListeners()
       bot.removeAllListeners()
       bot._client.removeAllListeners()
+      utils.log(loggedIin)
       utils.log(reason);
       utils.log(`${username} foi desconectado, reconectando...`, 'brightRed');
       await utils.sleep(14000);
